@@ -92,27 +92,3 @@ class TestRoom(unittest.TestCase):
         guests_already_in_room = ["Callum", "James"]
         self.room.add_guest_to_room(guests_already_in_room)
         self.assertEqual("Space for 2 more", self.room.check_if_room_too_full(self.room))
-
-    # def test_if_room_has_guests_false(self):
-    #     self.assertFalse(self.room.check_if_guests_in_room(self.room.capacity))
-
-    # def test_if_room_has_guests_true(self):
-    #     guest_to_add = "Callum"
-    #     self.room.add_guest_to_room(guest_to_add)
-    #     self.assertEqual(["Callum"], self.room.guests_in_room)
-    #     self.assertTrue(self.room.check_if_guests_in_room(self.room.capacity))
-
-
-    # def test_if_room_full_true(self):
-    #     self.assertTrue(self.room.is_full(self.room.capacity))
-
-    # def test_if_room_full_false(self):
-    #     self.assertFalse(self.room.is_full(self.room_2.capacity))
-
-    # def test_if_room_has_guests_false(self):
-    #     self.assertEqual(0, self.room.get_guests_in_room(self.room))
-
-    # def test_add_guest_to_room_when_full(self):
-    #     guest_to_add = "Callum"
-    #     self.room.add_guest_to_room(guest_to_add)
-    #     self.assertEqual("Room too full", self.room.)
