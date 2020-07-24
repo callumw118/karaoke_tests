@@ -60,6 +60,14 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(0, len(self.room.songs_queued))
 
     def test_room_adds_song(self):
-        song_to_add = {"Crystal Lake": "Disobey"}
+        song_to_add = [{"Crystal Lake": "Disobey"}]
         self.room.add_song(song_to_add)
         self.assertEqual(song_to_add, self.room.songs_queued)
+
+    def test_room_has_songs_queued(self):
+        songs_currently_queued = [{"Crystal Lake": "Disobey"}, {"Currents", "Second Skin"}]
+        self.room.add_song(songs_currently_queued)
+        add_more_songs = {"Bad Omens": "Dethrone"}
+        self.room.add_song(add_more_songs)
+        total_in_queue = [{"Crystal Lake": "Disobey"}, {"Currents", "Second Skin"}, {"Bad Omens": "Dethrone"}]
+        self.assertEqual(total_in_queue, self.room.songs_queued)

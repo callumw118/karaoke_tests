@@ -3,7 +3,7 @@ class Room:
     def __init__(self, room_number):
         self.room_number = room_number
         self.guests_in_room = []
-        self.songs_queued = {}
+        self.songs_queued = []
 
     def create_room(self, room_number):
         return self.room_number
@@ -22,5 +22,9 @@ class Room:
         else:
             self.guests_in_room.remove(guests_to_remove)
 
-    def add_song(self, song):
-        self.songs_queued = song
+    def add_song(self, songs):
+        if isinstance(songs, list):
+            for song in songs:
+                self.songs_queued.append(song)
+        else:
+            self.songs_queued.append(songs)
