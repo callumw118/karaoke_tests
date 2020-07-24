@@ -16,25 +16,42 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(2, self.room_2.create_room(self.room_2))
 
     def test_empty_room(self):
-        self.assertEqual(0, len(self.room.number_of_guests))
+        self.assertEqual(0, len(self.room.guests_in_room))
 
     def test_add_one_guest_to_room_callum(self):
         guest_to_add = "Callum"
         self.room.add_guest_to_room(guest_to_add)
-        self.assertEqual(["Callum"], self.room.number_of_guests)
+        self.assertEqual(["Callum"], self.room.guests_in_room)
 
     def test_add_one_guest_to_room_james(self):
         guest_to_add = "James"
         self.room.add_guest_to_room(guest_to_add)
-        self.assertEqual(["James"], self.room.number_of_guests)
+        self.assertEqual(["James"], self.room.guests_in_room)
 
     def test_add_two_guests_to_room(self):
         guests_to_add = ["Callum", "James"]
         self.room.add_guest_to_room(guests_to_add)
-        self.assertEqual(["Callum", "James"], self.room.number_of_guests)
+        self.assertEqual(["Callum", "James"], self.room.guests_in_room)
 
     def test_add_three_guests_to_room(self):
         guests_to_add = ["Callum", "James", "Grant"]
         self.room.add_guest_to_room(guests_to_add)
-        self.assertEqual(["Callum", "James", "Grant"], self.room.number_of_guests)
-    
+        self.assertEqual(["Callum", "James", "Grant"], self.room.guests_in_room)
+
+    def test_checkout_guest_from_room_callum(self):
+        guest_to_add = "Callum"
+        self.room.add_guest_to_room(guest_to_add)
+        self.room.remove_guest_from_room(guest_to_add)
+        self.assertEqual([], self.room.guests_in_room)
+
+    def test_checkout_guest_from_room_james(self):
+        guest_to_add = "James"
+        self.room.add_guest_to_room(guest_to_add)
+        self.room.remove_guest_from_room(guest_to_add)
+        self.assertEqual([], self.room.guests_in_room)
+
+    def test_checkout_all_guests(self):
+        guests_to_add = ["Callum", "James", "Grant"]
+        self.room.add_guest_to_room(guests_to_add)
+        self.room.remove_guest_from_room(guests_to_add)
+        self.assertEqual([], self.room.guests_in_room)
