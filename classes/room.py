@@ -21,3 +21,6 @@ class Room:
                 self.guests_in_room.remove(guest)
         else:
             self.guests_in_room.remove(guests_to_remove)
+
+    def add_song(self, song):
+        self.songs_queued = song

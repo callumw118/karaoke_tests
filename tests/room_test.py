@@ -55,3 +55,11 @@ class TestRoom(unittest.TestCase):
         self.room.add_guest_to_room(guests_to_add)
         self.room.remove_guest_from_room(guests_to_add)
         self.assertEqual([], self.room.guests_in_room)
+
+    def test_room_has_no_songs_queued(self):
+        self.assertEqual(0, len(self.room.songs_queued))
+
+    def test_room_adds_song(self):
+        song_to_add = {"Crystal Lake": "Disobey"}
+        self.room.add_song(song_to_add)
+        self.assertEqual(song_to_add, self.room.songs_queued)
