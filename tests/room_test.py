@@ -27,3 +27,14 @@ class TestRoom(unittest.TestCase):
         guest_to_add = "James"
         self.room.add_guest_to_room(guest_to_add)
         self.assertEqual(["James"], self.room.number_of_guests)
+
+    def test_add_two_guests_to_room(self):
+        guests_to_add = ["Callum", "James"]
+        self.room.add_guest_to_room(guests_to_add)
+        self.assertEqual(["Callum", "James"], self.room.number_of_guests)
+
+    def test_add_three_guests_to_room(self):
+        guests_to_add = ["Callum", "James", "Grant"]
+        self.room.add_guest_to_room(guests_to_add)
+        self.assertEqual(["Callum", "James", "Grant"], self.room.number_of_guests)
+    
