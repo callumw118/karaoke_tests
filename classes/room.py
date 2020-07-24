@@ -1,10 +1,10 @@
 class Room:
 
-    def __init__(self, room_number):
+    def __init__(self, room_number, capacity):
         self.room_number = room_number
         self.guests_in_room = []
         self.songs_queued = []
-        self._capacity = 4
+        self.capacity = capacity
 
     def create_room(self, room_number):
         return self.room_number
@@ -31,3 +31,16 @@ class Room:
                 self.songs_queued.append(song)
         else:
             self.songs_queued.append(songs)
+
+    def is_full(self, room):
+        return room >= self.capacity
+
+    def check_if_guests_in_room(self, room):
+        if len(self.guests_in_room) > 1:
+            return True
+
+    def check_if_room_too_full(self, room):
+        space_left = self.capacity - len(self.guests_in_room)
+        if self.check_if_guests_in_room(room) and len(self.guests_in_room) >= self.capacity:
+            return "Room too full"
+        return f"Space for {space_left} more"
