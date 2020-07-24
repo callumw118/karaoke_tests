@@ -3,8 +3,8 @@ from classes.guest import Guest
 
 class TestGuess(unittest.TestCase):
     def setUp(self):
-        self.guest = Guest("Callum")
-        self.guest_2 = Guest("James")
+        self.guest = Guest("Callum", 10.00)
+        self.guest_2 = Guest("James", 15.00)
     
     def test_guest_has_name(self):
         self.assertEqual("Callum", self.guest.name)
@@ -16,3 +16,6 @@ class TestGuess(unittest.TestCase):
     def test_has_created_name_james(self):
         actual = self.guest_2.create_guest(self.guest_2)
         self.assertEqual("James", actual)
+
+    def test_customer_has_cash(self):
+        self.assertEqual(10.00, self.guest.cash)
