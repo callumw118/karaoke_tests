@@ -4,6 +4,7 @@ class Room:
         self.room_number = room_number
         self.guests_in_room = []
         self.songs_queued = []
+        self._capacity = 4
 
     def create_room(self, room_number):
         return self.room_number

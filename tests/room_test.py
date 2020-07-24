@@ -71,3 +71,6 @@ class TestRoom(unittest.TestCase):
         self.room.add_song(add_more_songs)
         total_in_queue = [{"Crystal Lake": "Disobey"}, {"Currents", "Second Skin"}, {"Bad Omens": "Dethrone"}]
         self.assertEqual(total_in_queue, self.room.songs_queued)
+
+    def test_room_has_capacity(self):
+        self.assertEqual(4, self.room._capacity)
