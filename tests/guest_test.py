@@ -19,3 +19,11 @@ class TestGuess(unittest.TestCase):
 
     def test_customer_has_cash(self):
         self.assertEqual(10.00, self.guest.cash)
+
+    def test_customer_can_afford_true(self):
+        self.assertTrue(self.guest.can_guest_afford(self.guest))
+
+    def test_customer_spend_cash(self):
+        entry_fee = 5.00
+        self.guest.spend_cash(entry_fee)
+        self.assertEqual(5.00, self.guest.cash)
