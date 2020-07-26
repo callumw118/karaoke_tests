@@ -1,10 +1,13 @@
 import unittest
 from classes.room import Room
+from classes.guest import Guest
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room = Room(1, 4, 5.00)
         self.room_2 = Room(2, 2, 5.00)
+
+        self.guest = Guest("Callum", 10.00, {"Crystal Lake": "Disobey"})
 
     def test_room_has_number(self):
         self.assertEqual(1, self.room.room_number)
@@ -92,3 +95,8 @@ class TestRoom(unittest.TestCase):
         guests_already_in_room = ["Callum", "James"]
         self.room.add_guest_to_room(guests_already_in_room)
         self.assertEqual("Space for 2 more", self.room.check_if_room_too_full(self.room))
+
+    def test_guest_favourite_song_in_queue(self):
+        song_to_add = [{"Crystal Lake": "Disobey"}, {"Currents", "Second Skin"}]
+        self.room.add_song(song_to_add)
+        self.assertEqual("Whoo!", self.room.check_if_favourite_song_queued(self.guest))

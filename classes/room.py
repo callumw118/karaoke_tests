@@ -45,3 +45,7 @@ class Room:
         if self.check_if_guests_in_room(room) and len(self.guests_in_room) >= self.capacity:
             return "Room too full"
         return f"Space for {space_left} more"
+
+    def check_if_favourite_song_queued(self, guest):
+        if guest.favourite_song in self.songs_queued:
+            return "Whoo!"
