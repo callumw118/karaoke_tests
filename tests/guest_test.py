@@ -6,8 +6,10 @@ class TestGuess(unittest.TestCase):
     def setUp(self):
         self.guest = Guest("Callum", 10.00, {"Crystal Lake": "Disobey"})
         self.guest_2 = Guest("James", 4.00, {"Currents": "Second Skin"})
+        self.guest_3 = Guest("Grant", 50.00, {"Bad Omens": "Dethrone"})
 
         self.room = Room(1, 4, 5.00)
+        self.room_2 = Room(1, 6, 10.00)
     
     def test_guest_has_name(self):
         self.assertEqual("Callum", self.guest.name)
@@ -35,3 +37,12 @@ class TestGuess(unittest.TestCase):
 
     def test_customer_has_favourite_song(self):
         self.assertEqual({"Crystal Lake": "Disobey"}, self.guest.favourite_song)
+
+    def test_customer_total_spend(self):
+        self.guest.spend_cash(self.room.entry_fee)
+        self.assertEqual(5.00, self.guest.cash_spent)
+
+    def test_customer_keep_track_of_total_spend(self):
+        self.guest_3.spend_cash(self.room.entry_fee)
+        self.guest_3.spend_cash(self.room_2.entry_fee)
+        self.assertEqual(15.00, self.guest_3.cash_spent)

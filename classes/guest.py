@@ -4,6 +4,7 @@ class Guest:
         self.name = name
         self.cash = cash
         self.favourite_song = favourite_song
+        self.cash_spent = 0
 
     def create_guest(self, name):
         return self.name
@@ -13,3 +14,7 @@ class Guest:
 
     def spend_cash(self, entry_fee):
         self.cash-= entry_fee
+        self.cash_spent += entry_fee
+
+    def total_spent(self, guest):
+        return self.cash_spent
