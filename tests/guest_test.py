@@ -1,10 +1,13 @@
 import unittest
 from classes.guest import Guest
+from classes.room import Room
 
 class TestGuess(unittest.TestCase):
     def setUp(self):
         self.guest = Guest("Callum", 10.00)
-        self.guest_2 = Guest("James", 15.00)
+        self.guest_2 = Guest("James", 4.00)
+
+        self.room = Room(1, 4, 5.00)
     
     def test_guest_has_name(self):
         self.assertEqual("Callum", self.guest.name)
@@ -21,9 +24,11 @@ class TestGuess(unittest.TestCase):
         self.assertEqual(10.00, self.guest.cash)
 
     def test_customer_can_afford_true(self):
-        self.assertTrue(self.guest.can_guest_afford(self.guest))
+        self.assertTrue(self.guest.can_guest_afford(self.room))
+
+    def test_customer_can_afford_false(self):
+        self.assertFalse(self.guest_2.can_guest_afford(self.room))
 
     def test_customer_spend_cash(self):
-        entry_fee = 5.00
-        self.guest.spend_cash(entry_fee)
+        self.guest.spend_cash(self.room.entry_fee)
         self.assertEqual(5.00, self.guest.cash)

@@ -3,8 +3,8 @@ from classes.room import Room
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
-        self.room = Room(1, 4)
-        self.room_2 = Room(2, 2)
+        self.room = Room(1, 4, 5.00)
+        self.room_2 = Room(2, 2, 5.00)
 
     def test_room_has_number(self):
         self.assertEqual(1, self.room.room_number)
