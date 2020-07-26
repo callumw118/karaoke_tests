@@ -4,8 +4,8 @@ from classes.room import Room
 
 class TestGuess(unittest.TestCase):
     def setUp(self):
-        self.guest = Guest("Callum", 10.00)
-        self.guest_2 = Guest("James", 4.00)
+        self.guest = Guest("Callum", 10.00, {"Crystal Lake": "Disobey"})
+        self.guest_2 = Guest("James", 4.00, {"Currents": "Second Skin"})
 
         self.room = Room(1, 4, 5.00)
     
@@ -32,3 +32,6 @@ class TestGuess(unittest.TestCase):
     def test_customer_spend_cash(self):
         self.guest.spend_cash(self.room.entry_fee)
         self.assertEqual(5.00, self.guest.cash)
+
+    def test_customer_has_favourite_song(self):
+        self.assertEqual({"Crystal Lake": "Disobey"}, self.guest.favourite_song)
